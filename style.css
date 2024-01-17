@@ -1,0 +1,8 @@
+body {
+    box-sizing: border-box;
+}
+
+input {
+    margin:1em;
+    padding: 1px;
+}
