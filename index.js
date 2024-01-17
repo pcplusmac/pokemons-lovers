@@ -21,16 +21,47 @@ function fetchPokeDetails(url){
 
 }
 
+function handleClick(e){
+    e.preventDefault()
+    console.log("event",e)
+    
+    let container = document.querySelector('#cards-container')
+    container.innerText = " "
+}
+
+function handleMouseOver(e){
+    e.preventDefault()
+    console.log("over:",e)
+    e.target.style.color="red"
+    
+    
+    // card.style.color="red"
+    
+    
+}
+
+function handleMouseOut(e){
+    e.preventDefault()
+    e.target.style.color='black'
+}
+
 function renderPokemon(pokemon){
     let pokeList = document.querySelector('#cards-container')
+    
     console.log("ulpoke:",pokeList)
     let ulpoke = document.createElement('ul')
     ulpoke.id = "poke-card"
+    ulpoke.addEventListener('click',handleClick)
+    // ulpoke.onmouseover = function(){handleMouseOver()}
+    ulpoke.addEventListener('mouseover',handleMouseOver)
+    ulpoke.addEventListener('mouseout',handleMouseOut)
     let lipoke = document.createElement('li')
+    
     lipoke.innerHTML = `
         <img src="${pokemon.sprites.back_default}" alt="image coming">
-        <div class="detail-list">
-            <h4>Nanme: ${pokemon.name}</h4>
+        <h4>Name: ${pokemon.name}</h4>
+        <div id="detail-list">
+
             <ul class="details">
                 <li>weight: ${pokemon.weight}.</li>
                 <li>Height: ${pokemon.height}</li>
@@ -49,6 +80,8 @@ function renderPokemon(pokemon){
     pokeList.appendChild(ulpoke)
 
 }
+
+
 
 init()
 
