@@ -2,7 +2,17 @@ body {
     box-sizing: border-box;
 }
 
+header {
+    display: flex;
+}
+
+#search-form {
+    justify-content: right;
+    gap: 20em;
+
+}
+
 input {
-    margin:1em;
+    margin: 1em;
     padding: 1px;
 }
