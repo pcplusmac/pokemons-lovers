@@ -35,3 +35,13 @@ input {
 
 
 }
+#div_btn {
+    justify-content: center;
+    
+    gap:5em;
+}
+
+.buttons {
+    margin: 6px;
+    color:brown;
+}
