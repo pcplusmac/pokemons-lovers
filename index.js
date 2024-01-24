@@ -9,7 +9,7 @@ formSearch.addEventListener('submit', e => {
 })
 
 // })
-
+let container = document.querySelector('#cards-container')
 
 
 function init() {
@@ -36,6 +36,16 @@ function fetchPokeDetails(url) {
 
 }
 
+function handleForm(e) {
+    e.preventDefault()
+    console.log("form data is :")
+    const name = e.target.pokename.value
+    url = `https://pokeapi.co/api/v2/pokemon/${name}`
+    fetchPokeSolo(url)
+
+
+}
+
 function handleClick(e) {
     e.preventDefault()
     console.log("event", e.target)
@@ -45,7 +55,7 @@ function handleClick(e) {
     // const name = element
     // console.log("image",image)
 
-    let container = document.querySelector('#cards-container')
+    
     let card = document.createElement('ul')
     let details = document.createElement('li')
     details.innerHTML = `
@@ -54,13 +64,6 @@ function handleClick(e) {
     console.log("solo:", card)
     card.appendChild(details)
     container.appendChild(card)
-
-    container.innerHTML = `
-        <h3>This is new solo page</h3>
-    
-       
-
-    `
 
 }
 
@@ -81,9 +84,9 @@ function handleMouseOut(e) {
 }
 
 function renderPokemon(pokemon) {
-    let pokeList = document.querySelector('#cards-container')
+    // let pokeList = document.querySelector('#cards-container')
 
-    console.log("ulpoke:", pokeList)
+    // console.log("ulpoke:", pokeList)
     let ulpoke = document.createElement('ul')
     ulpoke.id = "poke-card"
     ulpoke.addEventListener('click', handleClick)
@@ -106,25 +109,17 @@ function renderPokemon(pokemon) {
                     </ol>
                 </li>
                 
-                <li></li>
+            
             </ul>
         </div>
     `
 
     ulpoke.appendChild(lipoke)
-    pokeList.appendChild(ulpoke)
+    container.appendChild(ulpoke)
 
 }
 
-function handleForm(e) {
-    e.preventDefault()
-    console.log("form data is :")
-    const name = e.target.pokename.value
-    url = `https://pokeapi.co/api/v2/pokemon/${name}`
-    fetchPokeSolo(url)
 
-
-}
 
 function fetchPokeSolo(url) {
     fetch(url)
@@ -137,7 +132,9 @@ function fetchPokeSolo(url) {
 }
 
 function renderPokeSolo(pokeSolo) {
-    let pokeList = document.querySelector('#cards-container')
+    // let pokeList = document.querySelector('#cards-container')
+
+    container.innerHTML= ``
 
     console.log("ulpoke:", pokeList)
     console.log("soloREnder:", pokeSolo)
@@ -164,7 +161,7 @@ function renderPokeSolo(pokeSolo) {
         `
 
     ulpoke.appendChild(lipoke)
-    pokeList.appendChild(ulpoke)
+    container.appendChild(ulpoke)
 
     const btnBack = document.createElement('button')
     btnBack.id = "button_back"
